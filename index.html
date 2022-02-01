@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>liangjw.cn</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="text-content">
+        <span>如果天总也不亮</span>
+        <span>那就摸黑过生活</span>
+        <span>如果发出声音是危险的</span>
+        <span>那就保持沉默</span>
+        <span>如果自觉无力发光</span>
+        <span>那就别去照亮别人</span>
+        <span>但是——</span>
+        <span>不要习惯了黑暗就为黑暗辩护</span>
+        <span>不要为自己的苟且而得意洋洋</span>
+        <span>不要嘲讽那些比自己更勇敢、更有热量的人们</span>
+        <span>可以卑微如尘土</span>
+        <span>不可扭曲如蛆虫</span>
+        <span></span>
+        <span style="color: gray">——曼德拉《漫漫人生路》</span>
+    </div>
+
+    <div id="beian">京ICP备2020042493号-1</div>
+</body>
+
+<style>
+    @font-face {
+        font-family: zk;
+        src: url(./ttf/zk.ttf);
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    body {
+        background-image: linear-gradient(to bottom right, #a49cd4, #c1d4be);
+    }
+
+    #text-content {
+        padding-top: 3%;
+        text-align: center;
+        font-family: zk;
+        font-size: x-large;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #text-content>span {
+        margin: 1%;
+    }
+
+    #beian {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: right;
+        color: #acabcf !important;
+    }
+
+    #beian:hover {
+        cursor: pointer;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        $("#beian").click(function () {
+            window.open("https://beian.miit.gov.cn");
+        });
+
+        $("#text-content").typewriter();
+    });
+
+    (function ($) {
+        $.fn.typewriter = function () {
+            this.each(function () {
+                var $ele = $(this), str = $ele.html(), progress = 0;
+                $ele.html('');
+                var timer = setInterval(function () {
+                    var current = str.substr(progress, 1);
+                    if (current == '<') {
+                        progress = str.indexOf('>', progress) + 1;
+                    } else {
+                        progress++;
+                    }
+                    $ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+                    if (progress >= str.length) {
+                        clearInterval(timer);
+                    }
+                }, 75);
+            });
+            return this;
+        };
+    })(jQuery);
+</script>
+
+</html>
